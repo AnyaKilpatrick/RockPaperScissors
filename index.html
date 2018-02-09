@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+
+<body>
+
+    <div id="game">
+        <p> User: <span id="userCount"></span></p>
+        <p> Computer: <span id="computerCount"></span></p>
+       
+        <p> Wins: <span id="win"> 0 </span></p>
+        <p> Loses: <span id="lose">0</span></p>
+        <p> Ties: <span id="tie">0</span></p>
+    </div>
+
+    <script type="text/javascript">
+        var computerChoices = ["r", "p", "s"];
+        var win = 0;
+        var lose = 0;
+        var tie = 0;
+
+
+        // This function is run whenever the user presses a key.
+        document.onkeyup = function(event) {
+            // Determines which key was pressed.
+            var userGuess = event.key;
+            // Randomly chooses a choice from the options array. This is the Computer's guess.
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+            if (computerGuess === userGuess) {
+                tie +=1;
+                document.getElementById("tie").innerHTML=tie;
+                if (computerGuess === "r" && userGuess === "r") {
+                document.getElementById("userCount").innerHTML="rock";
+                document.getElementById("computerCount").innerHTML="rock";
+                }
+
+                if (computerGuess === "s" && userGuess === "s") {
+                document.getElementById("userCount").innerHTML="scissors";
+                document.getElementById("computerCount").innerHTML="scissors";
+                }
+
+                if (computerGuess === "p" && userGuess === "p") {
+                document.getElementById("userCount").innerHTML="paper";
+                document.getElementById("computerCount").innerHTML="paper";
+                }
+            } 
+
+            else if (computerGuess === "s" && userGuess === "r") {
+                win +=1;
+                document.getElementById("win").innerHTML= win;
+                document.getElementById("userCount").innerHTML="rock";
+                document.getElementById("computerCount").innerHTML="scissors";
+            } 
+    
+            else if (computerGuess === "s" && userGuess === "p") {
+                lose +=1;
+                document.getElementById("lose").innerHTML= lose;
+                document.getElementById("userCount").innerHTML="paper";
+                document.getElementById("computerCount").innerHTML="scissors";
+            }  
+
+            else if (computerGuess === "r" && userGuess === "p") {
+                win +=1;
+                document.getElementById("win").innerHTML= win;
+                document.getElementById("userCount").innerHTML="paper";
+                document.getElementById("computerCount").innerHTML="rock";
+            }  
+
+            else if (computerGuess === "r" && userGuess === "s") {
+                lose +=1;
+                document.getElementById("lose").innerHTML= lose;
+                document.getElementById("userCount").innerHTML="scissors";
+                document.getElementById("computerCount").innerHTML="rock";
+            }  
+
+            else if (computerGuess === "p" && userGuess === "r") {
+                lose +=1;
+                document.getElementById("lose").innerHTML= lose;
+                document.getElementById("userCount").innerHTML="rock";
+                document.getElementById("computerCount").innerHTML="paper";
+            }  
+
+            else if (computerGuess === "p" && userGuess === "s") {
+                win +=1;
+                document.getElementById("win").innerHTML= win;
+                document.getElementById("userCount").innerHTML="scissors";
+                document.getElementById("computerCount").innerHTML="paper";
+            }  
+        };
+
+    </script>
+</body>
+</html>
